@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>好友邀请 · 小白加速器</title>
+<style>
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; margin: 0; background: linear-gradient(160deg, #1a0a2e 0%, #2d0a3e 50%, #0a1628 100%); color: #fff; min-height: 100vh; }
+  .wrap { max-width: 480px; margin: 0 auto; padding: 40px 20px 60px; text-align: center; }
+  .logo { font-size: 56px; margin-bottom: 8px; }
+  h1 { font-size: 26px; margin: 8px 0; background: linear-gradient(90deg, #e91e8c, #ffd54f); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .sub { color: rgba(255,255,255,.65); font-size: 14px; line-height: 1.8; margin-bottom: 24px; }
+  .code-box { background: rgba(233,30,140,.12); border: 1px solid rgba(233,30,140,.5); border-radius: 16px; padding: 20px; margin: 20px 0; }
+  .code-label { font-size: 12px; color: rgba(255,255,255,.55); margin-bottom: 6px; }
+  .code { font-size: 30px; font-weight: 800; letter-spacing: 3px; color: #ffd54f; font-family: ui-monospace, monospace; }
+  .copy-btn { margin-top: 14px; background: linear-gradient(90deg, #e91e8c, #ffd54f); color: #1a0a2e; border: none; border-radius: 999px; padding: 10px 28px; font-size: 15px; font-weight: 700; cursor: pointer; }
+  .copy-btn:active { transform: scale(.96); }
+  .dl { display: block; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); border-radius: 12px; padding: 14px; margin: 10px 0; color: #fff; text-decoration: none; font-size: 15px; }
+  .dl:active { background: rgba(255,255,255,.15); }
+  .dl b { color: #ffd54f; }
+  .steps { text-align: left; background: rgba(255,255,255,.06); border-radius: 12px; padding: 16px 20px; font-size: 13px; color: rgba(255,255,255,.75); line-height: 2.1; margin-top: 24px; }
+  .foot { margin-top: 32px; font-size: 12px; color: rgba(255,255,255,.35); }
+  .toast { position: fixed; left: 50%; bottom: 60px; transform: translateX(-50%); background: #333; padding: 8px 20px; border-radius: 999px; font-size: 13px; opacity: 0; transition: opacity .25s; }
+  .toast.show { opacity: 1; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="logo">⚡</div>
+  <h1>小白加速器</h1>
+  <p class="sub">好友邀请你体验：一键连接 · 无需注册 · 全平台通用</p>
+
+  <div class="code-box">
+    <div class="code-label">邀请码（注册时自动生效）</div>
+    <div class="code" id="code">——</div>
+    <button class="copy-btn" onclick="copyCode()">复制邀请码</button>
+  </div>
+
+  <p class="sub" style="margin-bottom:12px">选择你的设备下载：</p>
+  <a class="dl" href="https://hqsxai.cn/download/xiaobai-acc-android.apk">🤖 <b>安卓版</b> 下载 APK</a>
+  <a class="dl" href="https://hqsxai.cn/download/xiaobai-acc-windows.exe">🪟 <b>Windows 版</b> 下载安装包</a>
+  <div class="dl" style="opacity:.55">🍎 <b>iOS 版</b> App Store 审核中，敬请期待</div>
+
+  <div class="steps">
+    <b>怎么用邀请码？</b><br>
+    1. 下载并打开小白加速器<br>
+    2. 首次打开点「一键开通」，注册时系统会自动带上邀请码<br>
+    3. 如果走了邮箱注册，在注册页手动填入邀请码即可<br>
+    4. 你的好友满 3 人邀请，双方都有福利 🎁
+  </div>
+
+  <p class="foot">小白加速器 · 沈阳恒奇三讯科技有限公司</p>
+</div>
+<div class="toast" id="toast">已复制邀请码</div>
+<script>
+  const params = new URLSearchParams(location.search);
+  const code = (params.get('code') || '').trim();
+  document.getElementById('code').textContent = code || '无效链接';
+  function copyCode() {
+    if (!code) return;
+    navigator.clipboard.writeText(code).catch(() => {});
+    const t = document.getElementById('toast');
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 1500);
+  }
+</script>
+</body>
+</html>
